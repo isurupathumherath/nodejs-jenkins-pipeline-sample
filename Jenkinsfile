@@ -20,7 +20,8 @@ node {
         docker.withRegistry('https://index.docker.io/', 'dockerhub') {
             // def app = docker.build("isuruherath22923/docker-example:$BUILD_NUMBER", '.')
             def app = sh "docker build -t isuruherath22923/docker-example:${commit_id} ." 
-            app.push()
+            app.push("${commit_id}")            
+            app.push("latest")
         }
     }
 }
