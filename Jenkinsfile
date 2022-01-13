@@ -1,5 +1,6 @@
 node {
    def commit_id
+   def app
    stage('Preparation') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
@@ -11,9 +12,13 @@ node {
        sh 'npm test'
      }
    }
-   stage('docker build/push') {
-     docker.withRegistry('https://index.docker.io/v2/', 'dockerhub') {
-       def app = docker.build("isuruherath22923/docker-example:${commit_id}", '.').push()
-     }
+   stage('docker build') {
+       app = docker.build("isuruherath22923/docker-example:${commit_id}", '.')
    }
+
+   stage('Push image') {
+    docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub-credentials') {
+      app.push()
+    }
+  }
 }
