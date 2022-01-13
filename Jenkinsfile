@@ -10,7 +10,7 @@ node {
     }
 
     stage('Test') {
-        nodejs(nodeJsInstallationName: 'nodejs') {
+        nodejs(nodeJSInstallationName: 'nodejs') {
             sh 'npm install'
             sh 'npm test'
         }
