@@ -18,7 +18,7 @@ node {
 
     stage('Docker Build and Push') {
         docker.withRegistry('https://index.docker.io/', 'dockerhub') {
-            def app = docker.build(" isuruherath22923/docker-example :$BUILD_NUMBER", '.')
+            def app = docker.build(" isuruherath22923/docker-example:$BUILD_NUMBER", '.')
             app.push()
         }
     }
