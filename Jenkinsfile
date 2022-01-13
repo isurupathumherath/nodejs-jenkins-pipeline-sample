@@ -17,7 +17,7 @@ node {
     }
 
     stage('Docker Build and Push') {
-        docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+        docker.withRegistry('https://index.docker.io/', 'dockerhub') {
             def app = docker.build('isuruherath22923/docker-example:${commit_id}', '.').push()
         }
     }
