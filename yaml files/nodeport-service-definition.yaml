@@ -6,6 +6,7 @@ metadata:
     name: nodejs-app-nodeport
     app: nodejs-app
 spec:
+  type: NodePort
   selector:
     name: nodejs-app
     app: nodejs-app
