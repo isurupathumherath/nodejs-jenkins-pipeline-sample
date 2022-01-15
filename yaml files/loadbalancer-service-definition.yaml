@@ -6,6 +6,7 @@ metadata:
     name: nodejs-app-loadbalancer
     app: nodejs-app
 spec:
+  type: LoadBalancer
   selector:
     app: myapp
   ports:
