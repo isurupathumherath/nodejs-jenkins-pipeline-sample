@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-myapp
+  labels:
+    name: nodejs-myapp
+    app: nodejs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: nodejs-app
+      app: nodejs-app
+  template:
+    metadata:
+      name: nodejs-app
+      labels:
+        name: nodejs-app
+        app: nodejs-app
+    spec:
+      containers:
+        - name: nodejs-app
+          image: isuruherath22923/docker-example
+          ports:
+            - containerPort: 80
